@@ -8,7 +8,8 @@
 li {padding: 1em;border: 1px solid #ccc;border-radius: 0.5em;margin:0.5em;overflow:hidden;list-style:none;box-shadow: 0.25em 0.25em 0.5em #ddd}
 a {color: #fff;background: #ddd;padding:0.5em;margin: 0.25em;border-radius: 0.5em;text-decoration:none}
 a:hover {background:#aaa}
-img {float:left}</style>
+img {float:left}
+hr{clear:both;visibility:hidden;padding:0;margin:0;height: 0.25em}</style>
     </head>
     <body>
         <h1>Idrinth's Endless Space 2 Mods</h1>
@@ -42,6 +43,7 @@ img {float:left}</style>
                     li.lastChild.setAttribute('alt', mod);
                     li.appendChild(document.createElement('p'));
                     li.lastChild.innerHTML = doc.getElementsByTagName('Description')[0].textContent.replace(/\r?\n/g, '<br/>');
+                    li.appendChild(document.createElement('hr'));
                     li.appendChild(document.createElement('a'));
                     li.lastChild.innerText = 'To Source';
                     li.lastChild.setAttribute('href',  doc.getElementsByTagName('Homepage')[0].textContent);
