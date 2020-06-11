@@ -37,7 +37,6 @@ hr{clear:both;visibility:hidden;padding:0.25em;margin:0;height: 0em}</style>
                     const doc = domparser.parseFromString(definition, "text/xml");
                     const li = document.createElement('li');
                     li.appendChild(document.createElement('h2'));
-                    console.log(doc.getElementsByTagName('Title'));
                     li.lastChild.innerText = doc.getElementsByTagName('Title')[0].textContent;
                     li.appendChild(document.createElement('img'));
                     li.lastChild.setAttribute('src', mod + '/' + doc.getElementsByTagName('PreviewImageFile')[0].textContent);
