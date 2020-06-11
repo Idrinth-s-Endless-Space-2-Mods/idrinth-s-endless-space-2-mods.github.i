@@ -20,7 +20,7 @@
                     "IdrinthsNewTraits",
                     "IdrinthsPoliticalReworkPatch"
                 ];
-                const domparser = new DOMParser()​​;
+                const domparser = new DOMParser();
                 for (const mod of mods) {
                     response = await fetch(`${mod}/${mod}.xml`);
                     if (!response.ok) {
