@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Idrinth's Endless Space 2 Mods</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Idrinth's Endless Space 2 Mods</h1>
+        <ul></ul>
+        <script>
+            (async () => {
+                const mods=[
+                    "IdrinthDamageRanges",
+                    "IdrinthImprovedBehemothRebalance",
+                    "IdrinthsImprovedHacking",
+                    "IdrinthsImprovedHeroes",
+                    "IdrinthsImprovedResources",
+                    "IdrinthImprovedTraits",
+                    "IdrinthsNewTraits",
+                    "IdrinthsPoliticalReworkPatch"
+                ];
+                const domparser = new DOMParser()​​;
+                for (const mod of mods) {
+                    response = await fetch(`${mod}/${mod}.xml`);
+                    if (!response.ok) {
+                        continue;
+                    }
+                    const definition = await response.text();
+                    const doc = domparser.parseFromString(definition, "text/xml");
+                    const li = document.createElement('li');
+                    li.appendChild(document.createElement('h2'));
+                    li.lastChild.innerText = doc.getElementsByTagName('Title')[0].innerText;
+                    li.appendChild(document.createElement('img'));
+                    li.lastChild.setAttribute('src', mod + '/' + doc.getElementsByTagName('PreviewImageFile')[0].innerText);
+                    li.lastChild.setAttribute('alt', mod);
+                    li.appendChild(document.createElement('pre'));
+                    li.lastChild.innerText = doc.getElementsByTagName('Description')[0].innerText;
+                    li.appendChild(document.createElement('a'));
+                    li.lastChild.innerText = 'To Source';
+                    li.lastChild.setAttribute('href',  doc.getElementsByTagName('Homepage')[0].innerText);
+                    const resp = await fetch(`${mod}/PublishedFile.Id`);
+                    if (resp.ok) {
+                        const id = resp.text();
+                        li.appendChild(document.createElement('a'));
+                        li.lastChild.innerText = 'To Workshop';
+                        li.lastChild.setAttribute('href', `https://steamcommunity.com/sharedfiles/filedetails/?id=${id}`);
+                    }
+                    document.getElementsByTagName('ul')[0].appendChild(li);
+                }
+            })();
+        </script>
+    </body>
+</html>
