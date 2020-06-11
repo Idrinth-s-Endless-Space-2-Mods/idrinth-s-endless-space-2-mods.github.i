@@ -11,12 +11,12 @@
         <script>
             (async () => {
                 const mods=[
-                    "IdrinthDamageRanges",
-                    "IdrinthImprovedBehemothRebalance",
+                    "IdrinthsDamageRanges",
+                    "IdrinthsImprovedBehemothRebalance",
                     "IdrinthsImprovedHacking",
                     "IdrinthsImprovedHeroes",
                     "IdrinthsImprovedResources",
-                    "IdrinthImprovedTraits",
+                    "IdrinthsImprovedTraits",
                     "IdrinthsNewTraits",
                     "IdrinthsPoliticalReworkPatch"
                 ];
@@ -41,7 +41,7 @@
                     li.lastChild.setAttribute('href',  doc.getElementsByTagName('Homepage')[0].innerText);
                     const resp = await fetch(`${mod}/PublishedFile.Id`);
                     if (resp.ok) {
-                        const id = resp.text();
+                        const id = await resp.text();
                         li.appendChild(document.createElement('a'));
                         li.lastChild.innerText = 'To Workshop';
                         li.lastChild.setAttribute('href', `https://steamcommunity.com/sharedfiles/filedetails/?id=${id}`);
