@@ -41,7 +41,7 @@ img {float:left}</style>
                     li.lastChild.setAttribute('src', mod + '/' + doc.getElementsByTagName('PreviewImageFile')[0].textContent);
                     li.lastChild.setAttribute('alt', mod);
                     li.appendChild(document.createElement('p'));
-                    li.lastChild.innerHTML = doc.getElementsByTagName('Description')[0].textContent.replace(/\r?\n/, '<br/>');
+                    li.lastChild.innerHTML = doc.getElementsByTagName('Description')[0].textContent.replace(/\r?\n/g, '<br/>');
                     li.appendChild(document.createElement('a'));
                     li.lastChild.innerText = 'To Source';
                     li.lastChild.setAttribute('href',  doc.getElementsByTagName('Homepage')[0].textContent);
