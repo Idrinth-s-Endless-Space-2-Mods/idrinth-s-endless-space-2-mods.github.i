@@ -27,10 +27,11 @@ hr{clear:both;visibility:hidden;padding:0.25em;margin:0;height: 0em}</style>
                     "IdrinthsPoliticalReworkPatch"
                 ];
                 const domparser = new DOMParser();
-                for (const mod of mods) {
-                    response = await fetch(`${mod}/${mod}.xml`);
+                const list = document.getElementsByTagName('ul')[0];
+                const load = async (mod) => {
+                    const response = await fetch(`${mod}/${mod}.xml`);
                     if (!response.ok) {
-                        continue;
+                        return;
                     }
                     const definition = await response.text();
                     const doc = domparser.parseFromString(definition, "text/xml");
@@ -54,7 +55,10 @@ hr{clear:both;visibility:hidden;padding:0.25em;margin:0;height: 0em}</style>
                         li.lastChild.innerText = 'To Workshop';
                         li.lastChild.setAttribute('href', `https://steamcommunity.com/sharedfiles/filedetails/?id=${id}`);
                     }
-                    document.getElementsByTagName('ul')[0].appendChild(li);
+                    list.appendChild(li);
+                };
+                for (const mod of mods) {
+                    load(mod);
                 }
             })();
         </script>
